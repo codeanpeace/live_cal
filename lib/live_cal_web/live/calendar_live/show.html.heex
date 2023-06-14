@@ -1,0 +1,27 @@
+<.header>
+  Calendar <%= @calendar.id %>
+  <:subtitle>This is a calendar record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/calendars/#{@calendar}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit calendar</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @calendar.name %></:item>
+  <:item title="Description"><%= @calendar.description %></:item>
+</.list>
+
+<.back navigate={~p"/calendars"}>Back to calendars</.back>
+
+<.modal :if={@live_action == :edit} id="calendar-modal" show on_cancel={JS.patch(~p"/calendars/#{@calendar}")}>
+  <.live_component
+    module={LiveCalWeb.CalendarLive.FormComponent}
+    id={@calendar.id}
+    title={@page_title}
+    action={@live_action}
+    calendar={@calendar}
+    patch={~p"/calendars/#{@calendar}"}
+  />
+</.modal>

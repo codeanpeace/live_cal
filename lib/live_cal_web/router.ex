@@ -18,6 +18,13 @@ defmodule LiveCalWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/calendars", CalendarLive.Index, :index
+    live "/calendars/new", CalendarLive.Index, :new
+    live "/calendars/:id/edit", CalendarLive.Index, :edit
+
+    live "/calendars/:id", CalendarLive.Show, :show
+    live "/calendars/:id/show/edit", CalendarLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
