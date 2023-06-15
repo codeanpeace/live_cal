@@ -6,6 +6,8 @@ defmodule LiveCal.Scheduling.Calendar do
     field :description, :string
     field :name, :string
 
+    has_many :events, LiveCal.Scheduling.Event, on_replace: :delete
+
     timestamps()
   end
 
@@ -13,6 +15,11 @@ defmodule LiveCal.Scheduling.Calendar do
   def changeset(calendar, attrs) do
     calendar
     |> cast(attrs, [:name, :description])
+    |> cast_assoc(:events,
+      with: &LiveCal.Scheduling.Event.changeset/2,
+      sort_param: :events_sort,
+      drop_param: :events_drop
+    )
     |> validate_required([:name, :description])
   end
 end

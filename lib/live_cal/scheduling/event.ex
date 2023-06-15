@@ -7,6 +7,8 @@ defmodule LiveCal.Scheduling.Event do
     field :name, :string
     field :type, :string
 
+    belongs_to :calendar, LiveCal.Scheduling.Calendar
+
     timestamps()
   end
 

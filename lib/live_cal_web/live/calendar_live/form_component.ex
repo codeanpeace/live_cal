@@ -21,6 +21,24 @@ defmodule LiveCalWeb.CalendarLive.FormComponent do
       >
         <.input field={@form[:name]} type="text" label="Name" />
         <.input field={@form[:description]} type="text" label="Description" />
+
+        <h2>Manage Events</h2>
+        <.inputs_for :let={ef} field={@form[:events]}>
+          <input type="hidden" name="calendar[events_sort][]" value={ef.index} />
+          <.input type="text" field={ef[:name]} placeholder="name" />
+          <.input type="select" field={ef[:type]} options={["-- select type --", "field trip"]} placeholder="type" />
+          <.input :if={ef.params["type"] in ["field trip"]} type="text" field={ef[:destination]} placeholder="destination" />
+          <label>
+            <input type="checkbox" name="calendar[events_drop][]" value={ef.index} class="hidden" />
+            delete event
+          </label>
+        </.inputs_for>
+
+        <label class="block cursor-pointer">
+          <input type="checkbox" name="calendar[events_sort][]" class="hidden" />
+          add event
+        </label>
+
         <:actions>
           <.button phx-disable-with="Saving...">Save Calendar</.button>
         </:actions>
