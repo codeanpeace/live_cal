@@ -1,5 +1,7 @@
 # LiveCal
 
+![demo gif](https://github.com/codeanpeace/live_cal/blob/master/demo.gif)
+
 This [commit](https://github.com/codeanpeace/live_cal/commit/e56742cfd0cfea7896829494924c078f94d5c860) demonstrates how to conditionally show and hide a nested input within [`Phoenix.Component.inputs_for/1`](https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#inputs_for/1) based on the value of a sibling nested input.
 
 To see it in action:
