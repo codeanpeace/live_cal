@@ -388,6 +388,31 @@ defmodule LiveCalWeb.CoreComponents do
   end
 
   @doc """
+  Renders a fieldset with multiple radio buttons representing `Ecto.Enum` fields.
+  note: string interpolation of `@field.value` is because it can switch from an atom to string
+        depending on whether it came from the database or form
+  """
+  attr :field, Phoenix.HTML.FormField,
+    doc: "a form field struct retrieved from the form, for example: @form[:email]"
+  attr :options, :list, doc: "the options for the radio buttons in the fieldset"
+  attr :checked_value, :string, doc: "the currently checked value"
+  def radio_fieldset(%{field: %Phoenix.HTML.FormField{}} = assigns) do
+    ~H"""
+    <div phx-feedback-for={@field.name}>
+      <.input :for={option <- @options}
+        field={@field}
+        id={"#{@field.id}_#{option}"}
+        type="radio"
+        label={String.capitalize(option)}
+        value={option}
+        checked={(@checked_value == option) || (@field.value == String.to_atom(option))}
+      />
+    </div>
+    """
+  end
+
+
+  @doc """
   Renders a label.
   """
   attr :for, :string, default: nil

@@ -22,6 +22,11 @@ defmodule LiveCalWeb.CalendarLive.FormComponent do
         <.input field={@form[:name]} type="text" label="Name" />
         <.input field={@form[:description]} type="text" label="Description" />
 
+        <.radio_fieldset field={@form[:visibility]}
+          options={Ecto.Enum.dump_values(Scheduling.Calendar, :visibility)}
+          checked_value={@form.params["visibility"]}
+        />
+
         <h2>Manage Events</h2>
         <.inputs_for :let={ef} field={@form[:events]}>
           <input type="hidden" name="calendar[events_sort][]" value={ef.index} />

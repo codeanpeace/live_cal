@@ -5,6 +5,7 @@ defmodule LiveCal.Repo.Migrations.CreateCalendars do
     create table(:calendars) do
       add :name, :string
       add :description, :string
+      add :visibility, :string
 
       timestamps()
     end

@@ -5,6 +5,7 @@ defmodule LiveCal.Scheduling.Calendar do
   schema "calendars" do
     field :description, :string
     field :name, :string
+    field :visibility, Ecto.Enum, values: [:public, :private], default: :private
 
     has_many :events, LiveCal.Scheduling.Event, on_replace: :delete
 
@@ -14,12 +15,12 @@ defmodule LiveCal.Scheduling.Calendar do
   @doc false
   def changeset(calendar, attrs) do
     calendar
-    |> cast(attrs, [:name, :description])
+    |> cast(attrs, [:name, :description, :visibility])
     |> cast_assoc(:events,
       with: &LiveCal.Scheduling.Event.changeset/2,
       sort_param: :events_sort,
       drop_param: :events_drop
     )
-    |> validate_required([:name, :description])
+    |> validate_required([:name, :description, :visibility])
   end
 end
