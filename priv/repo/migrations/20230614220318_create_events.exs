@@ -6,6 +6,7 @@ defmodule LiveCal.Repo.Migrations.CreateEvents do
       add :name, :string
       add :type, :string
       add :destination, :string
+      add :show_as, :string
       add :calendar_id, references(:calendars, on_delete: :nothing)
 
       timestamps()

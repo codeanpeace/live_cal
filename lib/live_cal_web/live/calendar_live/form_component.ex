@@ -28,6 +28,31 @@ defmodule LiveCalWeb.CalendarLive.FormComponent do
           <.input type="text" field={ef[:name]} placeholder="name" />
           <.input type="select" field={ef[:type]} options={["-- select type --", "field trip"]} placeholder="type" />
           <.input :if={ef.params["type"] in ["field trip"]} type="text" field={ef[:destination]} placeholder="destination" />
+
+          <fieldset>
+            <.input field={ef[:show_as]}
+              id="show_as_busy"
+              type="radio"
+              label="Busy"
+              value="busy"
+              checked={(ef[:show_as].value == :busy) || (ef.params["show_as"] == "busy")}
+            />
+            <.input field={ef[:show_as]}
+              id="show_as_free"
+              type="radio"
+              label="Free"
+              value="free"
+              checked={(ef[:show_as].value == :free) || (ef.params["show_as"] == "free")}
+            />
+            <.input field={ef[:show_as]}
+              id="show_as_tbd"
+              type="radio"
+              label="Tbd"
+              value="tbd"
+              checked={(ef[:show_as].value == :tbd) || (ef.params["show_as"] == "tbd")}
+            />
+          </fieldset>
+
           <label>
             <input type="checkbox" name="calendar[events_drop][]" value={ef.index} class="hidden" />
             delete event
