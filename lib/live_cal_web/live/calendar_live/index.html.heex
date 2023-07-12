@@ -7,6 +7,14 @@
   </:actions>
 </.header>
 
+<.button phx-click={JS.toggle(to: "[data-visibility='public']")}>
+  Toggle visibility of public calendars
+</.button>
+
+<.button phx-click={JS.toggle(to: "[data-visibility='private']")}>
+  Toggle visibility of private calendars
+</.button>
+
 <.table
   id="calendars"
   rows={@streams.calendars}
@@ -14,6 +22,7 @@
 >
   <:col :let={{_id, calendar}} label="Name"><%= calendar.name %></:col>
   <:col :let={{_id, calendar}} label="Description"><%= calendar.description %></:col>
+  <:col :let={{_id, calendar}} label="Visibility"><%= calendar.visibility %></:col>
   <:action :let={{_id, calendar}}>
     <div class="sr-only">
       <.link navigate={~p"/calendars/#{calendar}"}>Show</.link>
