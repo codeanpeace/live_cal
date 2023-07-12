@@ -39,6 +39,21 @@ For reference, this was created in response to this [thread](https://elixirforum
 
 ---------------------------------------
 
+The following commit demonstrates how to show/hide streamed elements by tagging them via HTML attributes and using LiveView's client side JS commands to toggle their visibility.
+
+- [Show or hide streamed calendars on the client side based on their visibility field](https://github.com/codeanpeace/live_cal/commit/5ec335d552ac36787934972ea23619a72513deef)
+
+To see it in action:
+
+  * Navigate to [`http://localhost:4000/calendars`](http://localhost:4000/calendars)
+  * Click the `public` and `private` toggle buttons once to hide the public and private calendars respectively
+  * Click either again to show the public and private calendars respectively
+  * So on and so forth
+
+For reference, this was created in response to this [thread](https://elixirforum.com/t/conditional-display-of-an-html-element-part-of-a-stream/56960/4?u=codeanpeace) on ElixirForum.
+
+---------------------------------------
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
