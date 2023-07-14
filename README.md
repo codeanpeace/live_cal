@@ -54,6 +54,21 @@ For reference, this was created in response to this [thread](https://elixirforum
 
 ---------------------------------------
 
+The following commit demonstrates how to add and remove a HTML class and attribute while using LiveView's client side JS commands to toggle their visibility.
+
+- [Add and remove HTML attribute and class while toggling via client side JS Commands](https://github.com/codeanpeace/live_cal/commit/7561dfce19ffc855478928dff0a6a1bb40b88085)
+
+To see it in action:
+
+  * Navigate to [`http://localhost:4000/calendars`](http://localhost:4000/calendars)
+  * Click the Aria prefixed `public` and `private` toggle buttons once to add the `aria-hidden` attributes and `invisible` classes to the `<tr>` elements representing public and private calendars respectively
+  * Click either again to remove the `aria-hidden` attributes and `invisible` classes respectively
+  * So on and so forth
+
+For reference, this was created in response to this [thread](https://elixirforum.com/t/challenges-with-phoenix-liveview-js-and-tailwindcss-transitions/57049/12?u=codeanpeace) on ElixirForum.
+
+---------------------------------------
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
