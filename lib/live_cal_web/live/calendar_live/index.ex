@@ -44,4 +44,30 @@ defmodule LiveCalWeb.CalendarLive.Index do
 
     {:noreply, stream_delete(socket, :calendars, calendar)}
   end
+
+  def accessible_js_toggle_1(js \\ %JS{}, [to: selector]) do
+    js
+    |> JS.remove_attribute("aria-hidden", to: selector <> "[style*='display: none']")
+    |> JS.set_attribute({"aria-hidden", "true"}, to: selector <> ":not([style*='display: none'])")
+    |> JS.remove_class("invisible", to: selector <> "[style*='display: none']")
+    |> JS.add_class("invisible", to: selector <> ":not([style*='display: none'])")
+    |> JS.toggle(to: selector)
+  end
+
+  def accessible_js_toggle_2(js \\ %JS{}, [to: selector]) do
+    js
+    |> JS.remove_attribute("aria-hidden", to: selector <> ".invisible")
+    |> JS.set_attribute({"aria-hidden", "true"}, to: selector <> ":not(.invisible)")
+    |> JS.remove_class("invisible", to: selector <> ".invisible")
+    |> JS.add_class("invisible", to: selector <> ":not(.invisible)")
+    |> JS.toggle(to: selector)
+  end
+
+  # note: toggling while selecting by attribute does not work
+  #def accessible_js_toggle_3(js \\ %JS{}, [to: selector]) do
+    #js
+    #|> JS.remove_attribute("aria-hidden", to: selector <> "[aria-hidden='true']")
+    #|> JS.set_attribute({"aria-hidden", "true"}, to: selector <> ":not([aria-hidden='true'])")
+    #|> JS.toggle(to: selector)
+  #end
 end

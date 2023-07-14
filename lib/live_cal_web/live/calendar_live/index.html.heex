@@ -15,6 +15,14 @@
   Toggle visibility of private calendars
 </.button>
 
+<.button phx-click={accessible_js_toggle_1(to: "[data-visibility='private']")}>
+  Aria toggle visibility of private calendars
+</.button>
+
+<.button phx-click={accessible_js_toggle_2(to: "[data-visibility='public']")}>
+  Aria toggle visibility of public calendars
+</.button>
+
 <.table
   id="calendars"
   rows={@streams.calendars}
