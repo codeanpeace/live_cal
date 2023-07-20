@@ -1,0 +1,44 @@
+<.header>
+  Listing Events
+  <:actions>
+    <.link patch={~p"/events/new"}>
+      <.button>New Event</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="events"
+  rows={@streams.events}
+  row_click={fn {_id, event} -> JS.navigate(~p"/events/#{event}") end}
+>
+  <:col :let={{_id, event}} label="Name"><%= event.name %></:col>
+  <:col :let={{_id, event}} label="Type"><%= event.type %></:col>
+  <:col :let={{_id, event}} label="Destination"><%= event.destination %></:col>
+  <:col :let={{_id, event}} label="Calendar ID"><%= event.calendar_id %></:col>
+  <:action :let={{_id, event}}>
+    <div class="sr-only">
+      <.link navigate={~p"/events/#{event}"}>Show</.link>
+    </div>
+    <.link patch={~p"/events/#{event}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, event}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: event.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="event-modal" show on_cancel={JS.patch(~p"/events")}>
+  <.live_component
+    module={LiveCalWeb.EventLive.FormComponent}
+    id={@event.id || :new}
+    title={@page_title}
+    action={@live_action}
+    event={@event}
+    patch={~p"/events"}
+  />
+</.modal>
