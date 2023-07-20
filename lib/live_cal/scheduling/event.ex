@@ -16,7 +16,8 @@ defmodule LiveCal.Scheduling.Event do
   @doc false
   def changeset(event, attrs) do
     event
-    |> cast(attrs, [:name, :type, :destination, :show_as])
+    |> cast(attrs, [:name, :type, :destination, :show_as, :calendar_id])
+    |> cast_assoc(:calendar)
     |> validate_required([:name, :type, :destination, :show_as])
   end
 end

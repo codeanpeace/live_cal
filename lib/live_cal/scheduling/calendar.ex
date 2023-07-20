@@ -21,6 +21,6 @@ defmodule LiveCal.Scheduling.Calendar do
       sort_param: :events_sort,
       drop_param: :events_drop
     )
-    |> validate_required([:name, :description, :visibility])
+    |> validate_required([:name])
   end
 end

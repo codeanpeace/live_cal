@@ -114,7 +114,7 @@ defmodule LiveCal.Scheduling do
 
   """
   def list_events do
-    Repo.all(Event)
+    Event |> Repo.all |> Repo.preload(:calendar)
   end
 
   @doc """
