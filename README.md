@@ -68,6 +68,22 @@ To see it in action:
 For reference, this was created in response to this [thread](https://elixirforum.com/t/challenges-with-phoenix-liveview-js-and-tailwindcss-transitions/57049/12?u=codeanpeace) on ElixirForum.
 
 ---------------------------------------
+The following two commits demonstrate how to allow users to choose between setting up a parent association by selecting an existing resource from a dropdown or creating a new resource via a nested form.
+
+- [Run LiveView generators for events](https://github.com/codeanpeace/live_cal/commit/f2f22c51086f993e7736ad2789587933a26d5878)
+- [Demonstrate creating a resource alongside a new or existing parent](https://github.com/codeanpeace/live_cal/commit/b8bc54b97c8f949c58d9c9086cbe6e5104d5d966)
+
+To see it in action:
+
+  * Navigate to [`http://localhost:4000/events`](http://localhost:4000/events/new)
+  * Select an existing calendar from the dropdown or click button to replace dropdown with form to add a new calendar
+  * Click `Save Event`
+  * Note the newly added event and its calendar id on the events index LiveView
+  * Click `New Event` and add another event
+
+For reference, this was created in response to this [thread](https://elixirforum.com/t/edit-or-add-association-in-the-same-form/57146/2?u=codeanpeace) on ElixirForum.
+
+---------------------------------------
 
 To start your Phoenix server:
 
