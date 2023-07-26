@@ -84,6 +84,19 @@ To see it in action:
 For reference, this was created in response to this [thread](https://elixirforum.com/t/edit-or-add-association-in-the-same-form/57146/2?u=codeanpeace) on ElixirForum.
 
 ---------------------------------------
+The following commit demonstrates how to show an empty message when there are no streamed items using the :last-child pseudoselector.
+
+- [Show empty stream message using :last-child pseudoselector](https://github.com/codeanpeace/live_cal/commit/cbdda424d6d352af9c240734c334207016651d4b)
+
+To see it in action:
+
+  * Navigate to [`http://localhost:4000/events`](http://localhost:4000/events/new)
+  * If there are no events, note the "No Streamed Items" message that disappears when creating an event.
+  * Alternatively, delete all events and note the "No Streamed Items" message that appears.
+
+For reference, this was created in response to this [thread](https://elixirforum.com/t/stream-empty-state/57219/6?u=codeanpeace) on ElixirForum.
+
+---------------------------------------
 
 To start your Phoenix server:
 
