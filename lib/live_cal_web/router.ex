@@ -29,6 +29,8 @@ defmodule LiveCalWeb.Router do
     live "/events", EventLive.Index, :index
     live "/events/new", EventLive.Index, :new
     live "/events/:id/edit", EventLive.Index, :edit
+
+    live "/organization_user_search", OrganizationUserSearchLive
   end
 
   # Other scopes may use custom stacks.
