@@ -27,7 +27,7 @@ defmodule LiveCalWeb.OrganizationUserSearchLive do
 
   def render(assigns) do
     ~H"""
-    <.form for={@form} phx-submit="submit">
+    <.form :let={f} for={@form} phx-submit="submit">
       <.input field={@form[:organization_id]} phx-change="select-organization"
         type="select"
         label="First select an organization to load its users:"
@@ -41,6 +41,7 @@ defmodule LiveCalWeb.OrganizationUserSearchLive do
         placeholder="user"
         options={@user_options}
         prompt="-- select user --"
+        :if={f.params["organization_id"]}
       />
       <button>Submit</button>
     </.form>
