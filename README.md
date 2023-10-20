@@ -97,6 +97,21 @@ To see it in action:
 For reference, this was created in response to this [thread](https://elixirforum.com/t/stream-empty-state/57219/6?u=codeanpeace) on ElixirForum.
 
 ---------------------------------------
+The following commits demonstrates how to dynamically set options for one dropdown based on the value a user selects in another dropdown.
+
+- [Fetch options for one dropdown based off the selected value of another dropdown](https://github.com/codeanpeace/live_cal/commit/300d7843a31f28a31678db0cf3dd81722656bec8)
+- [Hide dropdown until the other dropdown it depends on has a selected value](https://github.com/codeanpeace/live_cal/commit/5eab628c09ef9f22aea875566c680eb4c17f2403)
+
+To see it in action:
+
+  * Navigate to [`http://localhost:4000/organization_user_search`](http://localhost:4000/organization_user_search)
+  * Select a value from the organizations dropdown
+  * Select a value from the users dropdown that appears
+  * Submit the form and check the logs
+
+For reference, this was created in response to this [thread](https://elixirforum.com/t/basic-understanding-of-live-form/59091/3) on ElixirForum.
+
+---------------------------------------
 
 To start your Phoenix server:
 
